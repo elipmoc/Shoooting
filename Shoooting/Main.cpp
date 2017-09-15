@@ -1,5 +1,7 @@
 #include "UseDxLib.hpp"
 #include "Central.hpp"
+#include "TitleScene.hpp"
+#include <memory>
 
 int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 
@@ -10,6 +12,12 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 
 	//使用するフォントの設定
 	DxLib::ChangeFontType(DX_FONTTYPE_ANTIALIASING_EDGE_8X8);
+
+	//タイトルシーンを初期シーンとしてセット
+	//make_unique<型>でunique_ptrを作成している
+	//new game::TitleSceneをunique_ptrに渡すこともできるが
+	//例外安全性を考えるとあまり使わないほうがいい
+	game::Central::GetInstance().ChangeScene(std::make_unique<game::TitleScene>());
 
 	//メインループ
 	//Central()で実際のゲームの処理を行ってるよ
