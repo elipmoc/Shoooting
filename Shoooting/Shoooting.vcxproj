@@ -157,6 +157,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Central.hpp" />
+    <ClInclude Include="Scene.hpp" />
     <ClInclude Include="UseDxLib.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
