@@ -1,5 +1,6 @@
 #pragma once
 namespace game {
+
 	//‚¢‚í‚ä‚éx‚Æ‚™‚Ì\‘¢‘Ì‚İ‚½‚¢‚È
 	class Vec2 {
 		double m_x;
