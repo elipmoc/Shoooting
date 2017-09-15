@@ -162,6 +162,7 @@
   <ItemGroup>
     <ClInclude Include="Central.hpp" />
     <ClInclude Include="BattleScene.hpp" />
+    <ClInclude Include="define.hpp" />
     <ClInclude Include="GameObject.hpp" />
     <ClInclude Include="Key.hpp" />
     <ClInclude Include="Player.hpp" />

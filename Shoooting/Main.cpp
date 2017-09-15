@@ -1,13 +1,14 @@
 #include "UseDxLib.hpp"
 #include "Central.hpp"
 #include "TitleScene.hpp"
+#include "define.hpp"
 #include <memory>
 
 int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 
 	//ウインドウとかの初期化
 	DxLib::SetMainWindowText("文字シューティング c++版");
-	DxLib::SetGraphMode(500, 480, 16);
+	DxLib::SetGraphMode(game::WINDOW_W, game::WINDOW_H, 16);
 	DxLib::ChangeWindowMode(true), DxLib::DxLib_Init(), DxLib::SetDrawScreen(DX_SCREEN_BACK);
 
 	//使用するフォントの設定
