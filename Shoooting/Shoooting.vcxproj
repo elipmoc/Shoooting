@@ -153,12 +153,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Central.cpp" />
+    <ClCompile Include="BattleScene.cpp" />
     <ClCompile Include="Key.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="TitleScene.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Central.hpp" />
+    <ClInclude Include="BattleScene.hpp" />
     <ClInclude Include="Key.hpp" />
     <ClInclude Include="Scene.hpp" />
     <ClInclude Include="TitleScene.hpp" />
