@@ -1,5 +1,6 @@
 #include "Central.hpp"
 #include "Scene.hpp"
+#include "Key.hpp"
 
 namespace game {
 	//実体を生成
@@ -21,9 +22,13 @@ namespace game {
 		m_nowScene = std::move(newScene);
 	}
 
-	//シーン更新処理
+	//更新処理
 	bool Central::Update()
 	{
+		//キー情報更新
+		Key::GeInstance().UpdateKey();
+
+		//シーン更新
 		if(m_nowScene!=nullptr)
 			m_nowScene->Update();
 
