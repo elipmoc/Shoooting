@@ -4,10 +4,10 @@
 namespace game {
 
 	//Ž©‹@
-	class Plyer:public GameObject {
+	class Player:public GameObject {
 
 	public:
-		Plyer();
+		Player();
 		virtual void Update()final override;
 	};
 }

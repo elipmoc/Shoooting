@@ -11,7 +11,11 @@ namespace game {
 		Vec2 m_pos;
 	public:
 
-		GameObject(Vec2 pos=Vec2()){}
+		GameObject(Vec2 pos=Vec2()):m_pos(pos){}
+
+		//ƒƒ“ƒo•Ï”‚ğ•ÏX‚µ‚È‚¢‚±‚Æ‚ğ–¾¦‚·‚é‚½‚ß‚É
+		//const‚ğ•t‚¯‚é
+		Vec2 GetPos()const noexcept { return m_pos; }
 
 		virtual void Update()=0;
 
