@@ -7,6 +7,8 @@ namespace game {
 	//シーン更新処理
 	bool Central::Update()
 	{
-		return true;
+		return m_endFlag==false;
 	}
+
+
 }

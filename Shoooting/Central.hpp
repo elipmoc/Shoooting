@@ -17,6 +17,7 @@ namespace game {
 		//コンストラクタをprivateにして外部から生成できないようにする
 		Central()=default;
 
+		bool m_endFlag = false;
 	public:
 
 		//実体を渡す
@@ -27,5 +28,8 @@ namespace game {
 		//シーン更新処理
 		//返り値でwhileループを抜けるかどうかを制御しているよっ
 		bool Update();
+
+		//ゲームを終了させる
+		void End()noexcept{ m_endFlag = true; }
 	};
 }
