@@ -11,6 +11,8 @@ namespace game {
 		Vec2 m_pos;
 	public:
 
+		GameObject(Vec2 pos=Vec2()){}
+
 		virtual void Update()=0;
 
 		virtual ~GameObject(){}

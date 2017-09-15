@@ -21,7 +21,7 @@ namespace game {
 		double GetY()const noexcept { return m_y; }
 
 		void SetX(double x) noexcept { m_x = x; }
-		void SetX(double y) noexcept{ m_y = y; }
+		void SetY(double y) noexcept{ m_y = y; }
 		void SetXY(double x, double y)noexcept { m_x = x; m_y = y; }
 	};
 }
