@@ -1,16 +1,50 @@
 #pragma once
 #include "Player.hpp"
 #include "Key.hpp"
+#include "Barrage.hpp"
+#include "Bullet.hpp"
 #include "define.hpp"
 #include "UseDxLib.hpp"
 #include <string>
 
 namespace game {
+
+
+	void Player::PlayerShot()
+	{
+		//弾の発射頻度を調整する用
+		static int count = 0;
+		count++;
+		if (count % 15 != 0)return;
+
+		Bullet bullet[2];
+
+		//弾の位置設定
+		bullet[0].SetPos(GetPos() + Vec2(16, 0));
+		bullet[1].SetPos(GetPos() + Vec2(-16, 0));
+
+		//弾の進み具合を設定
+		bullet[0].SetAddPos(0, -7);
+		bullet[1].SetAddPos(0, -7);
+
+		//弾リストに新しい弾を追加してやる
+		m_barrage->AddBullet(bullet[0]);
+		m_barrage->AddBullet(bullet[1]);
+
+	}
+
+
 	Player::Player()
-		:GameObject(Vec2(WINDOW_W/2,WINDOW_H-20))
+		:GameObject(Vec2(WINDOW_W/2,WINDOW_H-20)),
+		m_barrage(std::make_unique<Barrage>(30))
 	{
 		SetSpeed(5);
 	}
+
+	Player::~Player()
+	{
+	}
+
 	void Player::Update()
 	{
 
@@ -41,6 +75,11 @@ namespace game {
 
 		}
 
+
+		//弾ショット！！
+		if(key.GetKey(KEY_INPUT_Z)!=0)PlayerShot();
+
+
 		//プレイヤーHP表示     
 		//std::to_stringで整数をstringに変換
 		std::string str =("HP:" + std::to_string(m_hp));
@@ -48,5 +87,8 @@ namespace game {
 
 		//プレイヤー表示
 		DxLib::DrawString(GetPos().x, GetPos().y, "自", DxLib::GetColor(255, 255, 255));
+
+		//弾リスト更新
+		m_barrage->Update();
 	}
 }
