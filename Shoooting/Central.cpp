@@ -1,6 +1,7 @@
 #include "Central.hpp"
 #include "Scene.hpp"
 #include "Key.hpp"
+#include "CollisionControl.hpp"
 
 namespace game {
 	//実体を生成
@@ -27,6 +28,9 @@ namespace game {
 	{
 		//キー情報更新
 		Key::GetInstance().UpdateKey();
+
+		//衝突判定計算
+		CollisionControl::GetInstance().Update();
 
 		//シーン更新
 		if(m_nowScene!=nullptr)

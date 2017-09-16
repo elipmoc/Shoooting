@@ -20,11 +20,11 @@ namespace game {
 		//これが演算子のオーバーロードだあ
 		//これでVec2+Vec2みたいなことができる
 
-		Vec2 operator+(const Vec2& right) {
+		Vec2 operator+(const Vec2& right)const noexcept {
 			return Vec2(x + right.x, y + right.y);
 		}
 
-		Vec2 operator-(const Vec2& right) {
+		Vec2 operator-(const Vec2& right)const noexcept {
 			return Vec2(x - right.x, y - right.y);
 		}
 	};

@@ -156,6 +156,8 @@
     <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="Central.cpp" />
     <ClCompile Include="BattleScene.cpp" />
+    <ClCompile Include="CollisionCircle.cpp" />
+    <ClCompile Include="CollisionControl.cpp" />
     <ClCompile Include="Key.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Player.cpp" />
@@ -167,6 +169,9 @@
     <ClInclude Include="Bullet.hpp" />
     <ClInclude Include="Central.hpp" />
     <ClInclude Include="BattleScene.hpp" />
+    <ClInclude Include="CollisionCircle.hpp" />
+    <ClInclude Include="CollisionControl.hpp" />
+    <ClInclude Include="CollisionData.hpp" />
     <ClInclude Include="define.hpp" />
     <ClInclude Include="GameObject.hpp" />
     <ClInclude Include="Key.hpp" />
