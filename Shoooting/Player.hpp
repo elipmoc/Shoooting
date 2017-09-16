@@ -4,10 +4,14 @@
 
 namespace game {
 
+	class CollisionCircle;
 	class Barrage;
 
 	//自機
 	class Player:public GameObject {
+
+		//自機のあたり判定オブジェクト
+		std::unique_ptr<CollisionCircle> m_collision;
 
 		//弾リスト
 		std::unique_ptr<Barrage> m_barrage;

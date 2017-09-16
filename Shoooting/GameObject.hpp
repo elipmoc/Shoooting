@@ -21,6 +21,9 @@ namespace game {
 		//constを付ける
 		Vec2 GetPos()const noexcept { return m_pos; }
 
+		//m_Posの参照を渡す。あたり判定のとこで使用してたりする
+		const Vec2& GetRefPos()const noexcept { return m_pos; }
+
 		//セッター作るときは引数をconst参照渡しにしたほうが速い
 		void SetPos(const Vec2& pos)noexcept { m_pos=pos; }
 		void SetPos(double x, double y)noexcept { m_pos.SetXY(x, y); }

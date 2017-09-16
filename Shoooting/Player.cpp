@@ -3,6 +3,7 @@
 #include "Key.hpp"
 #include "Barrage.hpp"
 #include "Bullet.hpp"
+#include "CollisionCircle.hpp"
 #include "define.hpp"
 #include "UseDxLib.hpp"
 #include <string>
@@ -17,27 +18,38 @@ namespace game {
 		count++;
 		if (count % 15 != 0)return;
 
-		Bullet bullet[2];
+		BulletInfo bullet1;
+		BulletInfo bullet2;
+
+		//弾のあたり判定IDを設定
+		bullet1.id = CollisionID::PlayerBulletID;
+		bullet2.id = CollisionID::PlayerBulletID;
 
 		//弾の位置設定
-		bullet[0].SetPos(GetPos() + Vec2(16, 0));
-		bullet[1].SetPos(GetPos() + Vec2(-16, 0));
+		bullet1.pos = (GetPos() + Vec2(16, 0));
+		bullet2.pos = (GetPos() + Vec2(-16, 0));
 
 		//弾の進み具合を設定
-		bullet[0].SetAddPos(0, -7);
-		bullet[1].SetAddPos(0, -7);
+		bullet1.addPos = { 0, -7 };
+		bullet2.addPos = { 0, -7 };
 
 		//弾リストに新しい弾を追加してやる
-		m_barrage->AddBullet(bullet[0]);
-		m_barrage->AddBullet(bullet[1]);
+		m_barrage->AddMakeBullet(bullet1);
+		m_barrage->AddMakeBullet(bullet2);
 
 	}
 
 
 	Player::Player()
 		:GameObject(Vec2(WINDOW_W/2,WINDOW_H-20)),
-		m_barrage(std::make_unique<Barrage>(30))
+		m_barrage(std::make_unique<Barrage>(30)),
+		m_collision(std::make_unique<CollisionCircle>(GetRefPos()))
 	{
+		//あたり判定の設定
+		m_collision->SetCollisionID(CollisionID::PlayerID);
+		m_collision->SetR(3);
+		m_collision->SetOffsetPos(Vec2(8,8));
+
 		SetSpeed(5);
 	}
 
@@ -47,6 +59,15 @@ namespace game {
 
 	void Player::Update()
 	{
+
+		//衝突したオブジェクトの処理(ラムダ式)
+		m_collision->GetColliBuf(
+			[&hp=m_hp](CollisionID id) {
+			if (id == CollisionID::TekiBulletID || id == CollisionID::TekiID) {
+				hp--;
+			}
+		}
+		);
 
 		//Key::GetInstance()長いから一度変数に入れとく
 		auto& key = Key::GetInstance();

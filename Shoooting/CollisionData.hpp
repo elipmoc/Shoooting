@@ -7,6 +7,7 @@ namespace game {
 		TekiID,
 		TekiBulletID,
 		PlayerID,
+		PlayerBulletID
 	};
 
 	class CollisionCircle;

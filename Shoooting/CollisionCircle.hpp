@@ -53,7 +53,7 @@ namespace game {
 
 		//衝突判定した結果を取得
 		template<class Func>
-		void GetColliID(Func&& func) {
+		void GetColliBuf(Func&& func) {
 			for (const auto& id : m_colliBuf) {
 				func(id);
 			}
@@ -61,7 +61,6 @@ namespace game {
 		}
 
 		//座標をバインドする
-		template<class F>
 		CollisionCircle(const Vec2& pos)
 			:bind_pos(pos), m_colliData(*(new CollisionData(*this))) {
 			RegisterCollision();

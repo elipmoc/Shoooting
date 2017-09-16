@@ -6,9 +6,12 @@ namespace game {
 
 	//前方宣言
 	class Barrage;
+	class CollisionCircle;
 
 	//敵のクラス
 	class Teki :public GameObject {
+		//あたり判定オブジェクト
+		std::unique_ptr<CollisionCircle>m_collision;
 
 		//弾リスト
 		std::unique_ptr<Barrage> m_barrage;

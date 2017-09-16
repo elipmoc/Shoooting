@@ -14,10 +14,16 @@ namespace game {
 	{
 	}
 
-	void Barrage::AddBullet(const Bullet& bullet)
+	
+	void Barrage::AddMakeBullet(const BulletInfo& bInfo)
 	{
+		//bInfoをもとにして
+		//bulletを組み立てる
+		auto bullet=std::make_unique<Bullet>(bInfo.id);
+		bullet->SetPos(bInfo.pos);
+		bullet->SetAddPos(bInfo.addPos);
 		//bulletのリストに新しいbulletを追加する
-		bullets.emplace_back(bullet);
+		bullets.emplace_back(std::move(bullet));
 	}
 
 	void Barrage::Update()
@@ -25,12 +31,12 @@ namespace game {
 		//削除するbulletをリストの後ろにソートする
 		//itrでその削除するbullet達の先頭のイテレータを得る
 		auto itr = 
-			std::remove_if(bullets.begin(), bullets.end(), [](Bullet& b) {return b.IsDelete(); });
+			std::remove_if(bullets.begin(), bullets.end(), [](std::unique_ptr<Bullet>& b) {return b->IsDelete(); });
 
 		//itrからリストの末尾まで削除する
 		//こうすることで削除対象のbulletを削除できる
 		bullets.erase(itr, bullets.end());
-
+		
 		//このように一度remove_ifで削除対象をソートしてから
 		//eraseで実際に削除するテクニックを
 		//erase-removeイディオムとか言う
@@ -40,7 +46,7 @@ namespace game {
 
 		//range based forでリストを回す
 		for (auto& bullet : bullets) {
-			bullet.Update();
+			bullet->Update();
 		}
 
 

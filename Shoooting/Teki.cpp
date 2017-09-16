@@ -1,14 +1,23 @@
 #include "Teki.hpp"
 #include "Barrage.hpp"
 #include "Bullet.hpp"
+#include "CollisionCircle.hpp"
 #include "define.hpp"
 #include "UseDxLib.hpp"
+
 
 namespace game {
 
 	Teki::Teki()
-		:m_barrage(std::make_unique<Barrage>(200))
+		:m_barrage(std::make_unique<Barrage>(200)),
+		m_collision(std::make_unique<CollisionCircle>(GetRefPos()))
 	{
+
+		//あたり判定の設定
+		m_collision->SetCollisionID(CollisionID::TekiID);
+		m_collision->SetR(7);
+		m_collision->SetOffsetPos(Vec2(8, 8));
+
 		SetPos( WINDOW_W / 2,30);
 		SetSpeed(2);
 		SetAddPos(GetSpeed(), 0);
@@ -18,6 +27,12 @@ namespace game {
 	}
 	void Teki::Update()
 	{
+
+		//衝突したオブジェクトの処理
+		m_collision->GetColliBuf([&hp=m_hp](CollisionID id) {
+			if (id == CollisionID::PlayerBulletID)
+				hp--;
+		});
 
 		//移動
 		SetPos(GetPos()+GetAddPos());
