@@ -159,6 +159,7 @@
     <ClCompile Include="Key.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="Teki.cpp" />
     <ClCompile Include="TitleScene.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -171,6 +172,7 @@
     <ClInclude Include="Key.hpp" />
     <ClInclude Include="Player.hpp" />
     <ClInclude Include="Scene.hpp" />
+    <ClInclude Include="Teki.hpp" />
     <ClInclude Include="TitleScene.hpp" />
     <ClInclude Include="UseDxLib.hpp" />
     <ClInclude Include="Vec2.hpp" />
