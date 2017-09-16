@@ -33,6 +33,9 @@ namespace game {
 		//削除は自動的にやってくれる
 		std::unique_ptr<Scene> m_nowScene;
 
+		//次のシーン
+		std::unique_ptr<Scene> m_nextScene;
+
 		//なぜ m_ を付けるか？
 		//member変数のｍという意味さ
 		bool m_endFlag = false;

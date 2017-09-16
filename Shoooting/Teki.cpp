@@ -3,6 +3,8 @@
 #include "Bullet.hpp"
 #include "CollisionCircle.hpp"
 #include "define.hpp"
+#include "Central.hpp"
+#include "TitleScene.hpp"
 #include "UseDxLib.hpp"
 
 
@@ -33,6 +35,9 @@ namespace game {
 			if (id == CollisionID::PlayerBulletID)
 				hp--;
 		});
+
+		if (m_hp <= 0)
+			Central::GetInstance().ChangeScene(std::make_unique<TitleScene>());
 
 		//ˆÚ“®
 		SetPos(GetPos()+GetAddPos());

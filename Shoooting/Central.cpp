@@ -20,7 +20,7 @@ namespace game {
 	{
 		//ムーブキャストを行いnewSceneの所有権がm_nowSceneに渡されたことを明示する
 		//こういう考え方をムーブセマンティクスと言う。はず。
-		m_nowScene = std::move(newScene);
+		m_nextScene = std::move(newScene);
 	}
 
 	//更新処理
@@ -31,6 +31,10 @@ namespace game {
 
 		//衝突判定計算
 		CollisionControl::GetInstance().Update();
+
+		//シーン変更
+		if (m_nextScene != nullptr)
+			m_nowScene = std::move(m_nextScene);
 
 		//シーン更新
 		if(m_nowScene!=nullptr)
