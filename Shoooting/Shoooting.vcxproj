@@ -152,6 +152,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Barrage.cpp" />
+    <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="Central.cpp" />
     <ClCompile Include="BattleScene.cpp" />
     <ClCompile Include="Key.cpp" />
@@ -160,6 +162,8 @@
     <ClCompile Include="TitleScene.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Barrage.hpp" />
+    <ClInclude Include="Bullet.hpp" />
     <ClInclude Include="Central.hpp" />
     <ClInclude Include="BattleScene.hpp" />
     <ClInclude Include="define.hpp" />
