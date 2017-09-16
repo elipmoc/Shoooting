@@ -26,7 +26,7 @@ namespace game {
 	bool Central::Update()
 	{
 		//キー情報更新
-		Key::GeInstance().UpdateKey();
+		Key::GetInstance().UpdateKey();
 
 		//シーン更新
 		if(m_nowScene!=nullptr)

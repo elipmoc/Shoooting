@@ -11,7 +11,7 @@ namespace game {
 	{
 		//タイトル文字描画
 		DxLib::DrawString(50, 50,"文字シューティング", DxLib::GetColor(255, 255, 255));
-		if (Key::GeInstance().GetKey(KEY_INPUT_RETURN) == 1)
+		if (Key::GetInstance().GetKey(KEY_INPUT_RETURN) == 1)
 			Central::GetInstance().ChangeScene(std::make_unique<BattleScene>());
 	}
 }

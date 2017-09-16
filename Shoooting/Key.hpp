@@ -13,7 +13,7 @@ namespace game {
 
 	public:
 
-		static Key& GeInstance(){return instance;}
+		static Key& GetInstance(){return instance;}
 
 		//ƒL[‚Ì”‚ğ’è”‚Å’è‹`‚µ‚Ä‚¨‚­
 		//’è”‚Íconstexpr‚ªÅ‚

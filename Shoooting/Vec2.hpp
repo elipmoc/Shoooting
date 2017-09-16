@@ -15,5 +15,17 @@ namespace game {
 			:x(_x),y(_y)
 		{}
 		void SetXY(double _x, double _y)noexcept { x = _x; y = _y; }
+
+		//演算子の定義
+		//これが演算子のオーバーロードだあ
+		//これでVec2+Vec2みたいなことができる
+
+		Vec2 operator+(const Vec2& right) {
+			return Vec2(x + right.x, y + right.y);
+		}
+
+		Vec2 operator-(const Vec2& right) {
+			return Vec2(x - right.x, y - right.y);
+		}
 	};
 }
