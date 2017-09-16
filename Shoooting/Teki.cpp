@@ -30,6 +30,10 @@ namespace game {
 	void Teki::Update()
 	{
 
+
+		//’e–‹‚Ìˆ—
+		if (m_hp > 20) { TekiBarrage1(); mode = 0; }
+		else if (m_hp > 0) { mode = 1; ModeCheck(); TekiBarrage2(); }
 		//Õ“Ë‚µ‚½ƒIƒuƒWƒFƒNƒg‚Ìˆ—
 		m_collision->GetColliBuf([&hp=m_hp](CollisionID id) {
 			if (id == CollisionID::PlayerBulletID)
@@ -48,5 +52,37 @@ namespace game {
 
 		//“G•¶Žš•`‰æ
 		DxLib::DrawString(GetPos().x,GetPos().y,"“G",DxLib::GetColor(255,255,255));
+	}
+
+	void Teki::ModeCheck() noexcept
+	{
+		if (beforMode != mode) {cont = 0; beforMode = mode; }
+	}
+
+	void Teki::TekiBarrage1()
+	{
+		cont++;
+		if (cont % 20 == 0) {
+			BulletInfo bInfo;
+			bInfo.pos = GetPos();
+			bInfo.addPos = { 0,7 };
+			bInfo.id = CollisionID::TekiBulletID;
+			m_barrage->AddMakeBullet(bInfo);
+		}
+	}
+	void Teki::TekiBarrage2()
+	{
+		cont++;
+		if (cont % 28 == 0) {
+			BulletInfo bInfo[3];
+			bInfo[0].addPos = {0,2.5};
+			bInfo[1].addPos = { cos(120.0 / 180 * PI)*2.5,sin(120.0 / 180 * PI)*2.5 };
+			bInfo[2].addPos = { cos(60.0 / 180 * PI)*2.5,sin(60.0 / 180 * PI)*2.5 };
+			for (int i = 0; i < 3; i++) {
+				bInfo[i].id = CollisionID::TekiBulletID;
+				bInfo[i].pos = GetPos();
+				m_barrage->AddMakeBullet(bInfo[i]);
+			}
+		}
 	}
 }
