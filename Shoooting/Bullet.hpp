@@ -3,7 +3,12 @@
 namespace game {
 
 	class Bullet :public GameObject {
+		//削除フラグ
 		bool m_deleteFlag = false;
+
+		//エリア内に弾があるかチェック
+		void AreaCheck();
+
 	public:
 
 		//削除フラグを立てる
@@ -14,6 +19,8 @@ namespace game {
 
 		//弾の更新処理
 		virtual void Update()final override;
+
+
 	};
 
 }
